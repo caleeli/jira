@@ -3,11 +3,12 @@
     "description": "Provides seamless integration with Jira, enabling easy connection and data interaction",
     "type": "library",
     "license": "MIT",
+    "version": "1.0.0",
     "autoload": {
         "psr-4": {
             "Codeflow\\Jira\\": "src/"
         },
-        "file": [
+        "files": [
             "src/helpers.php"
         ]
     },
