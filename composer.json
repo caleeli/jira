@@ -1,0 +1,17 @@
+{
+    "name": "codeflow/jira",
+    "description": "Provides seamless integration with Jira, enabling easy connection and data interaction",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Codeflow\\Jira\\": "src/"
+        },
+        "file": [
+            "src/helpers.php"
+        ]
+    },
+    "require": {
+        "guzzlehttp/guzzle": "*"
+    }
+}
