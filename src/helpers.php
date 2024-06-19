@@ -36,5 +36,3 @@ function import_jira_function()
     }
     return implode("\n", $definitions);
 }
-
-echo import_jira_function();
