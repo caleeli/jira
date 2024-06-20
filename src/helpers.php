@@ -19,7 +19,7 @@ function getTicketsAssignedToUser($username): array
             'issue_summary' => $ticket['fields']['summary'],
             'issue_description' => is_array($ticket['fields']['description'])
                 ? $jira->parseJiraDescription($ticket['fields']['description'])
-                : '',
+                : $ticket['fields']['summary'],
             'issue_status' => $ticket['fields']['status']['name'],
         ];
     }, $tickets['issues']);
