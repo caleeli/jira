@@ -15,12 +15,12 @@ function getTicketsAssignedToUser($username): array
     $tickets['issues'] = $tickets['issues'] ?? [];
     $tickets['issues'] = array_map(function ($ticket) use ($jira) {
         return [
-            'key' => $ticket['key'],
-            'summary' => $ticket['fields']['summary'],
-            'description' => is_array($ticket['fields']['description'])
+            'issue_key' => $ticket['key'],
+            'issue_summary' => $ticket['fields']['summary'],
+            'issue_description' => is_array($ticket['fields']['description'])
                 ? $jira->parseJiraDescription($ticket['fields']['description'])
                 : '',
-            'status' => $ticket['fields']['status']['name'],
+            'issue_status' => $ticket['fields']['status']['name'],
         ];
     }, $tickets['issues']);
 
