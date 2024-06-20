@@ -45,4 +45,18 @@ class JiraService
             return ['error' => $e->getMessage()];
         }
     }
+
+    public function parseJiraDescription(array $description, $result = ''): string
+    {
+        foreach ($description as $key => $value) {
+            if ($key === 'text') {
+                $result .= $value;
+            }
+            if (is_array($value)) {
+                $result = $this->parseJiraDescription($value, $result);
+            }
+        }
+
+        return $result;
+    }
 }

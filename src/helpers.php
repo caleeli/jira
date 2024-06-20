@@ -11,7 +11,20 @@ use Codeflow\Jira\JiraService;
 function getTicketsAssignedToUser($username): array
 {
     $jira = new JiraService();
-    return $jira->getTicketsAssignedToUser($username);
+    $tickets = $jira->getTicketsAssignedToUser($username);
+    $tickets['issues'] = $tickets['issues'] ?? [];
+    $tickets['issues'] = array_map(function ($ticket) use ($jira) {
+        return [
+            'key' => $ticket['key'],
+            'summary' => $ticket['fields']['summary'],
+            'description' => is_array($ticket['fields']['description'])
+                ? $jira->parseJiraDescription($ticket['fields']['description'])
+                : '',
+            'status' => $ticket['fields']['status']['name'],
+        ];
+    }, $tickets['issues']);
+
+    return $tickets;
 }
 
 function import_jira_function()
