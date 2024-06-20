@@ -29,7 +29,7 @@ class JiraService
 
     public function getTicketsAssignedToUser($username)
     {
-        $jql = "assignee=\"$username\" and project = FOUR and statusCategory = 'In Progress' ";
+        $jql = "assignee=\"$username\" and project = MOON and statusCategory = 'In Progress' ";
 
         try {
             $response = $this->client->request('GET', '/rest/api/3/search', [
