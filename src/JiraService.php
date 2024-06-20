@@ -29,7 +29,8 @@ class JiraService
 
     public function getTicketsAssignedToUser($username)
     {
-        $jql = "assignee=\"$username\" and project = MOON and statusCategory = 'To Do' ";
+        $project = getenv('JIRA_PROJECT') ?: 'MOON';
+        $jql = "assignee=\"$username\" and project = $project and status in ('To Do', 'In Backlog')";
 
         try {
             $response = $this->client->request('GET', '/rest/api/3/search', [
