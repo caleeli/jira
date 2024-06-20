@@ -3,7 +3,7 @@
     "description": "Provides seamless integration with Jira, enabling easy connection and data interaction",
     "type": "library",
     "license": "MIT",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "autoload": {
         "psr-4": {
             "Codeflow\\Jira\\": "src/"
